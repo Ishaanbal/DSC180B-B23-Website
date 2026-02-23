@@ -1,137 +1,134 @@
-# Pralsetinib Polypharmacology & Toxicity Knowledge Graph
-    
-    **Team Members:** Ishaanbal, Suchit Bhayani, TChima1, RyanCao2005
-    
-    ## Introduction
-    ### Abstract
-    <!-- Add abstract details here -->
-    
-    ### Project Goal
-    <!-- Add project goal details here -->
-    
-    ## Methods
-    ### Knowledge Graph Construction
-    <!-- Add details about Knowledge Graph Construction here --><!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pralsetinib Polypharmacology & Toxicity Knowledge Graph</title>
-        <style>
-            body {
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                line-height: 1.6;
-                color: #333;
-                max-width: 900px;
-                margin: 0 auto;
-                padding: 20px;
-                background-color: #f4f7f6;
-            }
-            header {
-                text-align: center;
-                padding: 40px 20px;
-                background-color: #fff;
-                border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-                margin-bottom: 30px;
-                border-top: 5px solid #2980b9;
-            }
-            h1 {
-                color: #2c3e50;
-                margin-bottom: 10px;
-                font-size: 2.2em;
-            }
-            .authors {
-                font-size: 1.1em;
-                color: #7f8c8d;
-                font-style: italic;
-            }
-            section {
-                background-color: #fff;
-                padding: 30px;
-                margin-bottom: 25px;
-                border-radius: 8px;
-                box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            }
-            h2 {
-                color: #2c3e50;
-                border-bottom: 2px solid #ecf0f1;
-                padding-bottom: 10px;
-                margin-top: 0;
-            }
-            h3 {
-                color: #2980b9;
-                margin-top: 20px;
-            }
-            p {
-                color: #555;
-                text-align: justify;
-            }
-        </style>
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pralsetinib Polypharmacology & Toxicity Knowledge Graph</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #2980b9;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 40px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border-top: 5px solid var(--accent-color);
+        }
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .authors {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+        .github-btn {
+            display: inline-block;
+            background-color: #24292e;
+            color: #ffffff;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        .github-btn:hover {
+            background-color: #000000;
+        }
+        .section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h3 {
+            color: var(--accent-color);
+            margin-top: 20px;
+        }
+        p {
+            color: #555;
+            text-align: justify;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
         <header>
             <h1>Pralsetinib Polypharmacology & Toxicity Knowledge Graph</h1>
-            <p class="authors"><strong>Team Members:</strong> Ishaanbal, Suchit Bhayani, TChima1, RyanCao2005</p>
+            <p class="authors"><strong>Team Members:</strong> Ishaan Bal, Suchit Bhayani, Ryan Cao, Taranvir Chima</p>
+            <a href="https://github.com/Ishaanbal/DSC180B-B23-Knowledge-Graph-and-Biomedical-Ontology" class="github-btn" target="_blank">View Full Project on GitHub</a>
         </header>
-    
-        <section id="abstract">
+
+        <div class="section">
             <h2>Abstract</h2>
             <p>We explore the unknown off-target space of Pralsetinib, a recently approved RET kinase inhibitor, to predict potential adverse effects. By constructing a neuro-symbolic knowledge graph enriched with biomedical ontologies, we aim to link drug mechanisms directly to toxicity. Using Graph Neural Networks (GNNs) on this graph, we predict off-target proteins and associated diseases/adverse events. Our GNN model successfully recovered all held-out known targets within the top 20 predictions, providing a strong foundation for generating safety-relevant hypotheses for new drugs.</p>
-        </section>
-    
-        <section id="introduction">
+        </div>
+
+        <div class="section">
             <h2>Introduction</h2>
             <p>Pralsetinib is a recently approved targeted therapy with limited long-term real-world safety data. Post-marketing pharmacovigilance has already revealed unexpected adverse effects beyond its primary on-target mechanisms (e.g., rhabdomyolysis, severe infections). Due to its complex kinase biology, there is a significant "unknown off-target space". In this study, we build a neuro-symbolic knowledge graph that links mechanisms to toxicity, enriching it with Gene Ontology (GO) and target-outcome links. By running a GNN over the full graph, we generate ranked predictions for potential off-target proteins and their associated adverse effects, offering valuable hypotheses for drug safety.</p>
-        </section>
-    
-        <section id="methods">
+        </div>
+
+        <div class="section">
             <h2>Methods</h2>
             <h3>Knowledge Graph Construction</h3>
             <p>We extracted edges and nodes from multiple sources, including PubChem (bioactivity, consolidated targets, clinical trials, chemical/gene co-occurrences) and literature text mining for adverse events, forming our initial relationships.</p>
-    
+
             <h3>Enrichment & Expansion</h3>
             <p>We expanded the graph by integrating GO pathways and target-outcome associations. We further expanded the protein set using the STRING PPI network and UniProt human kinases, drastically increasing the candidate space for prediction.</p>
-    
+
             <h3>GNN Off-Target Prediction</h3>
             <p>We trained a Graph Neural Network on the full graph to predict missing <code>(drug, inhibits, protein)</code> and <code>(protein, associated_with, Disease/AE)</code> links. A simple baseline model summing KG edge weights was used for comparison. Path-based reasoning was generated to explain the predicted links.</p>
-        </section>
-    
-        <section id="results">
+        </div>
+
+        <div class="section">
             <h2>Results</h2>
             <h3>Knowledge Graph Statistics</h3>
             <p>The final enriched and expanded graph consists of 1,084 nodes and 1,464 edges. The expansion increased our candidate protein set by approximately 34-fold, resulting in 516 candidates for ranking alongside 13 known Pralsetinib targets.</p>
-    
+
             <h3>Prediction Performance</h3>
             <p>We evaluated our GNN on a held-out test set of known Pralsetinib targets. The model achieved a Recall@5 of 25%, Recall@10 of 50%, and Recall@20 of 100%, successfully recovering all four held-out targets within the top 20 predictions (Mean Rank: 11.5, MRR: 0.147). The multi-hop structure utilized by the GNN significantly outperformed the baseline model.</p>
-    
+
             <h3>Interactive Visualization</h3>
             <p>We developed an interactive PyVis HTML visualization of the knowledge graph to explore the mechanistic pathways linking Pralsetinib to predicted diseases and adverse events.</p>
-        </section>
-    
-        <section id="conclusion">
+        </div>
+
+        <div class="section">
             <h2>Conclusion</h2>
             <p>Our neuro-symbolic, ontology-based approach demonstrates that GNNs can effectively leverage complex biomedical knowledge graphs to predict drug off-targets. By successfully identifying known targets and proposing novel candidates with path-based reasoning, this framework provides a powerful tool for early pharmacovigilance and hypothesis generation regarding the safety profiles of newly approved therapeutics.</p>
-        </section>
-    </body>
-    </html>
-    
-    
-    ### Enrichment & Expansion
-    <!-- Add details about Enrichment & Expansion here -->
-    
-    ### GNN Off-Target Prediction
-    <!-- Add details about GNN Off-Target Prediction here -->
-    
-    ## Results
-    ### Knowledge Graph Statistics
-    <!-- Add details about Knowledge Graph Statistics here -->
-    
-    ### Interactive Visualization
-    <!-- Add details about Interactive Visualization here -->
-    
-    ### Prediction Performance
-    <!-- Add details about Prediction Performance here -->
-    
-    ## Conclusion
-    <!-- Add conclusion details here -->
+        </div>
+    </div>
+</body>
+</html>
