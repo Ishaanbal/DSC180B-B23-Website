@@ -33,8 +33,15 @@ We constructed the baseline KG from PubChem-derived sources:
 * **Literature mining** (adverse event text mining)
 * **Chemical/gene co-occurrence signals** (weak evidence links)
     
+**Visualizing the Graph Structure** Initially, our graph was highly centralized around Pralsetinib, relying heavily on chemical and gene co-occurrences. After enriching it with biological ontologies, the composition shifted dramatically.
+
 ![KG Composition](https://raw.githubusercontent.com/Ishaanbal/DSC180B-B23-Website/main/images/KG_composition.png)
+*Above: Node type distribution showing how proteins and diseases become the dominant entities after our ontology enrichment, significantly increasing the graph's mechanistic breadth.*
+
+Visualizing this network highlights the complexity of drug interactions, but also reveals a structural challenge:
+
 ![KG Subset](https://raw.githubusercontent.com/Ishaanbal/DSC180B-B23-Website/main/images/KG_subset.png)
+*Above: A subset visualization of the Knowledge Graph. Notice how heavily centralized the edges remain around Pralsetinib (forming a "star topology"). This centralization motivates our use of Graph Neural Networks to look beyond direct edges and find hidden lateral connections.*
     
 <details>
 <summary><strong>Click here for the technical enrichment details</strong></summary>
@@ -56,9 +63,12 @@ We compared a simple baseline model against an advanced AI model (Graph Neural N
 <p>Our GNN uses the full KG, learns node embeddings with a 2-layer Graph Convolutional Network (GCN), and scores links with a Multi-Layer Perceptron (MLP) head. It is trained to predict <code>(Pralsetinib, inhibits, Protein)</code> and optionally <code>(Protein, associated_with, Outcome)</code>.</p>
 </details>
     
-![Target Predictions](https://raw.githubusercontent.com/Ishaanbal/DSC180B-B23-Website/main/images/target_predictions.png)
-    
 ## Results
+To evaluate our approach, we compared how well our AI model (GNN) and the baseline model could "rediscover" known targets that we intentionally hid during training.
+
+![Target Predictions](https://raw.githubusercontent.com/Ishaanbal/DSC180B-B23-Website/main/images/target_predictions.png)
+*Above: Known targets recovered in the top-k predictions. The GNN exploits multi-hop structures to find hidden connections much more effectively than the baseline.*
+
 * **High-Level Explanation:** When evaluated on known targets, our AI model successfully recovered 100% of the known drug-protein targets within its top 20 predictions!
 * **Beating the Baseline:** The AI retrieved significantly more known targets at larger *k* (Top-5, Top-10, Top-20) compared to the baseline model, highlighting the value of multi-hop graph structure over direct evidence alone. 
     
