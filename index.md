@@ -21,6 +21,9 @@ We study Pralsetinib off-target effects using a neuro-symbolic pipeline centered
 ## Methods
 
 ### 1. Knowledge Graph Construction
+![KG Composition](https://raw.githubusercontent.com/Ishaanbal/DSC180B-B23-Website/main/images/KG_composition.png)
+
+![KG Subset](https://raw.githubusercontent.com/Ishaanbal/DSC180B-B23-Website/main/images/KG_subset.png)
 We constructed the baseline KG from PubChem-derived sources:
 * **Bioactivity assays** (direct drug-target evidence mapping to `inhibits` edges)
 * **Clinical trials and indications** (mapping to `treats` edges)
@@ -42,7 +45,7 @@ We compared a simple KG baseline against a Graph Neural Network (GNN) link-predi
 * **Baseline:** Ranks proteins using only direct drug-protein edges and their numeric values (e.g., IC50 sum).
 * **GNN:** Uses the full KG, learns node embeddings with a 2-layer GCN, and scores links with an MLP head. It exploits multi-hop structure and shared connectivity patterns.
 
-![Target Predictions](images/target_predictions.png)
+![Target Predictions](https://raw.githubusercontent.com/Ishaanbal/DSC180B-B23-Website/main/images/target_predictions.png)
 
 ## Results
 * **High-Level Explanation:** When evaluated on known targets, our GNN model successfully recovered 100% of the known drug-protein targets within its top 20 predictions!
