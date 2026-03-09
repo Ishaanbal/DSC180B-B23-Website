@@ -1,17 +1,2 @@
 title: "Pralsetinib Polypharmacology & Toxicity Knowledge Graph"
-description: "A Neuro-Symbolic Approach to Drug Safety using Knowledge Graphs."
-theme: jekyll-theme-minimal
-logo: "" # You can add a link to an image here later if you want a logo
-github:
-  repository_url: https://github.com/Ishaanbal/DSC180B-B23-Website
-title: "Pralsetinib Polypharmacology & Toxicity Knowledge Graph"
-    description: "A Neuro-Symbolic Approach to Drug Safety using Knowledge Graphs."
-    theme: jekyll-theme-cayman
-    logo: "" # You can add a link to an image here later if you want a logo
-    githubtitle: "Pralsetinib Polypharmacology & Toxicity Knowledge Graph"
-    description: "A Neuro-Symbolic Approach to Drug Safety using Knowledge Graphs."
-    theme: jekyll-theme-cayman
-    logo: "" # You can add a link to an image here later if you want a logo
-    github:
-      repository_url: https://github.com/Ishaanbal/DSC180B-B23-Website
-      repository_url: https://github.com/Ishaanbal/DSC180B-B23-Website
+    theme: jekyll-theme-minimal
