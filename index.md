@@ -1,34 +1,51 @@
 # Predicting Unknown Side Effects of the Cancer Drug Pralsetinib
-**A Neuro-Symbolic Approach to Drug Safety using Knowledge Graphs**
-
-**Team Members:** [Insert Your Names Here]
-
----
-
-## Abstract
-Pralsetinib has limited long-term real-world safety data. Post-marketing pharmacovigilance already shows unexpected adverse effects beyond on-target effects. Because it is new, used in a small subset of patients, and has complex kinase biology, there is a high "unknown off-target space"—making it well-suited for an ontology-based off-target prediction study. Our approach builds a neuro-symbolic knowledge graph linking mechanisms to toxicity, enriching it with ontologies, and trains a Graph Neural Network to predict specific off-target adverse outcomes.
-
-## Introduction: The Problem
-* **The Hook:** Pralsetinib is a recently approved, powerful cancer drug (a RET kinase inhibitor). However, because it is so new, we don't have enough long-term safety data.
-* **The Problem:** Post-marketing data is showing unexpected adverse side effects like severe infections, cognitive disorders, and rhabdomyolysis. These happen because the drug accidentally interacts with "off-target" proteins in the body.
-* **Our Goal:** Predict these unknown off-target effects before they surprise patients and doctors, creating a safety map for Pralsetinib.
-
-## Methods
-We built a **Knowledge Graph**—a giant web connecting drugs, proteins, diseases, and adverse events based on decades of biomedical literature and chemical data. Then, we trained an AI (a Graph Neural Network) to look at this web and "guess" where missing connections should be.
-
-<details>
-  <summary><strong>Click here for the technical details</strong></summary>
-  <p>We extracted data from PubChem, ChEMBL, and OpenTargets to build a base graph. We enriched it with Gene Ontology (GO) pathways and expanded it using STRING and UniProt. Finally, we trained a Graph Neural Network (GNN) on known <code>(drug, inhibits, protein)</code> and <code>(protein, associated_with, Disease)</code> edges to rank novel off-target proteins and predict specific adverse outcomes.</p>
-</details>
-
-## Results
-* **High-Level Explanation:** Our model was highly successful at finding the "needle in the haystack." When we hid known interactions from the AI to test it, our model successfully rediscovered 100% of those known drug-protein targets within its top 20 predictions!
-* **Beating the Baseline:** It significantly outperformed simpler prediction models because it was able to look at the *multi-hop structure* of the graph, rather than just direct connections.
-
-## Conclusion
-Our final deliverable is a ranked list of predicted adverse effects tied to specific off-target proteins. This provides pharmacologists and doctors with concrete, data-backed hypotheses for safety-relevant outcomes. By using AI to flag these risks early, we can help keep patients safer and guide better clinical monitoring for newly approved drugs.
-
----
-### Important Links
-* [GitHub Code Repository](https://github.com/Ishaanbal/DSC180B-B23-Knowledge-Graph-and-Biomedical-Ontology)
-* [Full Project Report](#) *(Link your PDF here later)*
+    **A Neuro-Symbolic Approach to Drug Safety using Knowledge Graphs**
+    
+    **Team Members:** Ryan Cao, Suchit Bhayani, Ishaan Bal, Taranvir Chima
+    
+    ---
+    
+    ## Abstract
+    We study Pralsetinib off-target effects using a neuro-symbolic pipeline centered on a knowledge graph (KG). Our goal is to replace a drug-centric star topology with a mechanistic, multi-hop structure that supports interpretable reasoning (Drug → Protein → Outcome). We construct a baseline KG from PubChem bioactivity, indications, clinical trials, literature mining, and co-occurrence signals, then enrich it with Gene Ontology (GO) biological processes and CTD protein-disease associations. This adds lateral Protein-Pathway and Protein-Outcome links while controlling node explosion. We implement a baseline GNN for link prediction and run a small held-out evaluation; results show strong recall of known targets but limited evidence of novel discovery, largely due to the small positive set. 
+    
+    ## Introduction: The Problem
+    * **The Hook:** Modern pharma R&D is constrained by fragmented, heterogeneous evidence. Assays, literature, clinical reports, and observational data rarely align in a single structured representation.
+    * **The Problem:** While LLMs can extract entities from text, they do not reliably enforce consistency, provenance, or multi-hop mechanistic structure. Pralsetinib, a recently approved cancer drug, needs better mapping of its off-target effects to predict unexpected adverse side effects.
+    * **Our Goal:** We shift from text-only extraction to a graph-based representation. By building a Knowledge Graph (KG) that encodes explicit relationships, we enable auditable reasoning and reproducible off-target hypotheses.
+    
+    ## Methods
+    
+    ### 1. Knowledge Graph Construction
+    We constructed the baseline KG from PubChem-derived sources:
+    * **Bioactivity assays** (direct drug-target evidence mapping to `inhibits` edges)
+    * **Clinical trials and indications** (mapping to `treats` edges)
+    * **Literature mining** (adverse event text mining mapping to `associated_with` edges)
+    * **Chemical/gene co-occurrence signals** (weak evidence links)
+    
+    <details>
+      <summary><strong>Click here for the technical enrichment details</strong></summary>
+      <p>To move beyond a simple "star topology" centered on the drug, we enriched the KG using Biomedical Ontologies:</p>
+      <ul>
+        <li><strong>Gene Ontology (GO):</strong> We queried GO via the UniProt API to link proteins to Biological Processes, adding `involved_in` edges and Pathway nodes.</li>
+        <li><strong>Comparative Toxicogenomics Database (CTD):</strong> We used CTD to connect proteins to clinical outcomes (Disease/AE) via `associated_with` edges, focusing on oncology to prevent node explosion.</li>
+      </ul>
+      <p>After enrichment, the graph grew to 580 nodes and 1,456 edges, with proteins and diseases dominating the structure.</p>
+    </details>
+    
+    ### 2. Modeling
+    We compared a simple KG baseline against a Graph Neural Network (GNN) link-prediction model:
+    * **Baseline:** Ranks proteins using only direct drug-protein edges and their numeric values (e.g., IC50 sum).
+    * **GNN:** Uses the full KG, learns node embeddings with a 2-layer GCN, and scores links with an MLP head. It exploits multi-hop structure and shared connectivity patterns.
+    
+    ## Results
+    * **High-Level Explanation:** When evaluated on known targets, our GNN model successfully recovered 100% of the known drug-protein targets within its top 20 predictions!
+    * **Beating the Baseline:** The GNN retrieved significantly more known targets at larger *k* (Top-5, Top-10, Top-20) compared to the baseline model, highlighting the value of multi-hop graph structure over direct evidence alone. 
+    * *Note:* Performance is currently constrained by the limited number of known positives (13 total), so expanding the protein set is a focus for future robust evaluation.
+    
+    ## Conclusion
+    Our neuro-symbolic pipeline demonstrates that combining structured assay evidence with ontology grounding (GO/CTD) enables mechanistic multi-hop reasoning. The final deliverable provides pharmacologists with transparent, data-backed hypotheses for Pralsetinib's safety-relevant outcomes, addressing the critical interpretability challenges in AI-driven drug discovery.
+    
+    ---
+    ### Important Links
+    * [GitHub Code Repository](https://github.com/Ishaanbal/DSC180B-B23-Knowledge-Graph-and-Biomedical-Ontology)
+    
