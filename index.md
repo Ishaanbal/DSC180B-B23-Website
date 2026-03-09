@@ -72,10 +72,10 @@ We compared a simple baseline model against an advanced AI model (Graph Neural N
 ---
 ## Get in Touch
 * **GitHub:** [Ishaanbal/DSC180B-B23-Knowledge-Graph-and-Biomedical-Ontology](https://github.com/Ishaanbal/DSC180B-B23-Knowledge-Graph-and-Biomedical-Ontology)
-* **Contact:**
-    * Ryan Cao – rycao@ucsd.edu
-    * Suchit Bhayani – sbhayani@ucsd.edu
-    * Ishaan Bal – ibal@ucsd.edu
-    * Taranvir Chima – tchima@ucsd.edu
+- * **Contact:**
+    - * Ryan Cao – rycao@ucsd.edu
+    - * Suchit Bhayani – sbhayani@ucsd.edu
+    - * Ishaan Bal – ibal@ucsd.edu
+    - * Taranvir Chima – tchima@ucsd.edu
     
 We welcome any questions or suggestions for further exploration.    
