@@ -52,7 +52,7 @@ We compared a simple baseline model against an advanced AI model (Graph Neural N
 * **AI Model:** Looks at the "big picture" (the full KG), learning from shared connectivity patterns and multi-hop structures to make predictions.
     
 <details>
-<summary><strong>Click here for the hairy, scary model details!</strong></summary>
+<summary><strong>Click here for more model details</strong></summary>
 <p>Our GNN uses the full KG, learns node embeddings with a 2-layer Graph Convolutional Network (GCN), and scores links with a Multi-Layer Perceptron (MLP) head. It is trained to predict <code>(Pralsetinib, inhibits, Protein)</code> and optionally <code>(Protein, associated_with, Outcome)</code>.</p>
 </details>
     
